@@ -1,6 +1,7 @@
 export const SITE_TITLE = 'Jenner';
 export const SITE_DESCRIPTION =
 	'Blog about software development and other stuff';
+export const SITE_ICON = '/icon.svg';
 
 export const SITE_URL = 'https://jenner.pe';
 export const SITE_IMAGE = '/seo/blog-seo.jpg';

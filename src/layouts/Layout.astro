@@ -1,7 +1,9 @@
 ---
+import '@fontsource-variable/inter';
+import "../styles/global.css";
 import { SITE_DESCRIPTION, SITE_IMAGE, SITE_TITLE } from "../src/consts";
 import BaseHead from "../components/heads/BaseHead.astro";
-import "../styles/global.css";
+import Header from "../components/navigation/Header.astro";
 
 const {title, description, image} = Astro.props;
 
@@ -15,7 +17,8 @@ const ogImage = image || SITE_IMAGE;
 	<head>
 		<BaseHead title={pageTitle} description={pageDescription} image={ogImage} />
 	</head>
-	<body>
+	<body class="bg-neutral-900 text-neutral-300">
+		<Header />
 		<slot />
 	</body>
 </html>
