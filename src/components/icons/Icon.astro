@@ -3,27 +3,23 @@
 export interface Props {
   name: string;
   size?: number | string;
-  width?: number | string;
-  height?: number | string;
   class?: string;
   strokeWidth?: number;
 }
 
 const { 
-  size = 24, 
-  width = size, 
-  height = size, 
-  strokeWidth = 2,
-  class: className = "",
+  size = 24,
+  strokeWidth = 0,
+  class: className = "fill-neutral-300",
   ...rest
 } = Astro.props;
 ---
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width={width}
-  height={height}
-  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  viewBox={`0 0 ${size} ${size}`}
   fill="none"
   stroke="currentColor"
   stroke-width={strokeWidth}
