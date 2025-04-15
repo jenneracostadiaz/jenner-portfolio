@@ -1,0 +1,22 @@
+---
+import Image from "astro/components/Image.astro";
+import AnchorLink from "../library/AnchorLink.astro";
+import { ArrowRight } from "../icons";
+---
+
+<section class="flex flex-col items-center justify-center my-36">
+    <Image
+     src="https://lh3.googleusercontent.com/a/ACg8ocJiwi1owISmkdBb2uTRP7FdsqzujxX3Daj3mUVJ1gFDyw-AO_fH=s288-c-no"
+     alt="Jenner Acosta Díaz"
+     width={150}
+     height={150}
+     class="rounded-full"
+     loading="eager"
+    />
+    <p class="text-small font-light my-4">Hi, I'm Jenner 👋</p>
+    <h1 class="text-4xl font-light max-w-2xl text-center bg-gradient-to-r from-neutral-300 to-neutral-700 inline-block text-transparent bg-clip-text">Software Developer passionate about crafting innovative solutions and delightful user experiences</h1>
+    <AnchorLink href="/projects" class="mt-10 flex items-center gap-2">
+        Latest Projects
+        <ArrowRight width={12} height={12} />
+    </AnchorLink>
+</section>
