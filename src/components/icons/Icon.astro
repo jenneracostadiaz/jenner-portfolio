@@ -1,0 +1,43 @@
+---
+// src/components/icons/Icon.astro
+export interface Props {
+  name: string;
+  size?: number | string;
+  width?: number | string;
+  height?: number | string;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { 
+  size = 24, 
+  width = size, 
+  height = size, 
+  strokeWidth = 2,
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={width}
+  height={height}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class:list={["icon", className]}
+  {...rest}
+>
+  <slot />
+</svg>
+
+<style>
+  .icon {
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+</style>
