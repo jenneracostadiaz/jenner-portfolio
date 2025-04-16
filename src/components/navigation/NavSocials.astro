@@ -1,0 +1,34 @@
+---
+import { Github, Linkedin, Instagram, Youtube } from "../icons";
+import { SITE_SOCIAL } from "../../consts";
+
+const socials = [
+    {
+        name: "Github",
+        url: SITE_SOCIAL.github,
+        icon: Github,
+    },
+]
+
+const socialIcons = {
+    github: Github,
+    linkedin: Linkedin,
+    instagram: Instagram,
+    youtube: Youtube,
+}
+
+const socialLinks = Object.entries(SITE_SOCIAL).map(([key, value]) => ({
+    name: key,
+    url: value,
+    icon: socialIcons[key as keyof typeof socialIcons],
+}))
+
+---
+
+<div class="flex items-center gap-4">
+    {socialLinks.map(({ name, url, icon: Icon }) => (
+        <a href={url} target="_blank" rel="noopener noreferrer">
+            <Icon />
+        </a>
+    ))}
+</div>
