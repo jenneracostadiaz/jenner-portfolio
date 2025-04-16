@@ -33,6 +33,6 @@ All commands are run from the root of the project, from a terminal:
 
 ## Next Steps
 
-- [ ] Front Page
+- [x] Front Page
 - [ ] Portfolio
 - [ ] Blog
