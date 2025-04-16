@@ -27,7 +27,7 @@ const socialLinks = Object.entries(SITE_SOCIAL).map(([key, value]) => ({
 
 <div class="flex items-center gap-4">
     {socialLinks.map(({ name, url, icon: Icon }) => (
-        <a href={url} target="_blank" rel="noopener noreferrer">
+        <a href={url} title={name} target="_blank" rel="noopener noreferrer">
             <Icon />
         </a>
     ))}

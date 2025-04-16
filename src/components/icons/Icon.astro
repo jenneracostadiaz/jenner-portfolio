@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const { 
+  name,
   size = 24,
   strokeWidth = 0,
   class: className = "",
@@ -38,9 +39,11 @@ const classList = [
   stroke-width={strokeWidth}
   stroke-linecap="round"
   stroke-linejoin="round"
+  aria-label={name}
   class:list={classList}
   {...rest}
 >
+  <title>{name}</title>
   <slot />
 </svg>
 
