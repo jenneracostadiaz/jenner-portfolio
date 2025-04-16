@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+
+const { post } = Astro.props;
+---
+
+<article>
+    <Image 
+        src={post.frontmatter.imageCover} 
+        alt={post.frontmatter.title}
+        width={500}
+        height={500}
+        class="w-full object-cover aspect-3/2"
+    />
+    <h2>{post.frontmatter.title}</h2>
+    <a href={post.url}>Read More</a>
+</article>
