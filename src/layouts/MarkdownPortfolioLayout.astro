@@ -1,0 +1,18 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+<Layout>
+    <main class="w-11/12 max-w-2xl mx-auto my-36">
+        <h1>{frontmatter.title}</h1>
+        <p><em>{frontmatter.description}</em></p>
+        <p>{frontmatter.slug}</p>
+        <p>{frontmatter.date}</p>
+        <p>{frontmatter.duration}</p>
+        <p>{frontmatter.type}</p>
+        <p>{frontmatter.tags}</p>
+        <p>{frontmatter.tech}</p>
+        <slot />
+    </main>
+</Layout>
