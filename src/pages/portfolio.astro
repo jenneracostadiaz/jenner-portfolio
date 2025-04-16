@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextGradient from '../components/elements/TextGradient.astro';
-const allPosts = Object.values(import.meta.glob('./portfolio/*.md', { eager: true }));
+import Grid from '../components/portfolio/Grid.astro';
 
 ---
 
@@ -9,8 +9,6 @@ const allPosts = Object.values(import.meta.glob('./portfolio/*.md', { eager: tru
     <main class="w-11/12 max-w-2xl mx-auto my-8 min-h-[calc(100vh-28rem)]">
         <h1 class="w-full text-4xl font-light text-center"><TextGradient class:list="to-neutral-600 from-neutral-300">Portfolio</TextGradient></h1>
         <p class="text-center text-sm text-neutral-500">A collection of my projects and work</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
-        </div>
+        <Grid />
     </main>
 </Layout>
