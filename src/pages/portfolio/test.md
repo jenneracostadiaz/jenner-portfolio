@@ -1,12 +1,11 @@
 ---
 layout: ../../layouts/MarkdownPortfolioLayout.astro
-title: "Nombre del Proyecto"
+title: "Wallet"
 description: "Breve resumen del proyecto, sus objetivos o características principales."
-slug: "nombre-del-proyecto" # usado para la URL
 date: "2024-11-20" # fecha de publicación
 duration: "3 meses" # duración del proyecto
 
-type: "freelance" # categoría principal: 'freelance', 'personal', 'colaboración', 'empresa', etc.
+category: "freelance" # categoría principal: 'freelance', 'personal', 'colaboración', 'empresa', etc.
 tags: ["React", "API", "UX", "Node.js"] # etiquetas para filtro
 tech: ["React", "Node.js", "MongoDB"] # tecnologías usadas
 
