@@ -1,5 +1,4 @@
 ---
-// src/components/icons/Icon.astro
 export interface Props {
   name: string;
   size?: number | string;
@@ -7,7 +6,7 @@ export interface Props {
   strokeWidth?: number;
 }
 
-const { 
+const {
   name,
   size = 24,
   strokeWidth = 0,
@@ -16,17 +15,16 @@ const {
 } = Astro.props;
 
 const sizeStyle = {
-  "md": "size-6",
-  "sm": "size-4",
-  "xs": "size-3",
-}
+  md: "size-6",
+  sm: "size-4",
+  xs: "size-3",
+};
 
 const classList = [
   "fill-neutral-300",
   sizeStyle[size as keyof typeof sizeStyle],
   className,
-]
-
+];
 ---
 
 <svg
