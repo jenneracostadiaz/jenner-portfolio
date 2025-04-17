@@ -92,14 +92,6 @@ const Card = ({ post }: { post: Post }) => {
                                         className="w-full object-cover"
                                     />
                                 ))}
-                                {post.frontmatter.images.map((image, index) => (
-                                    <img
-                                        key={`image-${index}`}
-                                        src={image}
-                                        alt={post.frontmatter.title}
-                                        className="w-full object-cover"
-                                    />
-                                ))}
                             </div>
                             <div className="py-4 px-6 flex flex-wrap justify-center sm:justify-end gap-4">
                                 {
