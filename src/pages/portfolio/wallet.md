@@ -5,7 +5,7 @@ description: "Breve resumen del proyecto, sus objetivos o características princ
 date: "2024-11-20" # fecha de publicación
 duration: "3 meses" # duración del proyecto
 
-category: "freelance" # categoría principal: 'freelance', 'personal', 'colaboración', 'empresa', etc.
+category: "peronsal" # categoría principal: 'freelance', 'personal', 'colaboración', 'open-source'
 tags: ["React", "API", "UX", "Node.js"] # etiquetas para filtro
 tech: ["React", "Node.js", "MongoDB"] # tecnologías usadas
 
