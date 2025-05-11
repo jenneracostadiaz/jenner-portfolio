@@ -1,12 +1,20 @@
 ---
-import { SITE_TITLE, SITE_ICON } from "../../consts"
-import Image from "astro/components/Image.astro";
+import { SITE_TITLE, SITE_ICON } from '../../consts';
+import Image from 'astro/components/Image.astro';
 
 const name = SITE_TITLE;
 const icon = SITE_ICON;
 ---
 
 <a href="/" class="flex items-center gap-2">
-    <Image src={icon} alt={name} width={24} height={24} decoding="async" loading="eager" class="w-6 h-6" />
+    <Image
+        src={icon}
+        alt={name}
+        width={24}
+        height={24}
+        decoding="async"
+        loading="eager"
+        class="w-6 h-6"
+    />
     <h1 class="text-2xl font-bold">{name}</h1>
 </a>

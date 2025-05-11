@@ -4,13 +4,15 @@
     "": {
       "name": "jenner-portfolio",
       "dependencies": {
-        "@astrojs/react": "latest",
-        "@fontsource-variable/inter": "latest",
-        "@tailwindcss/vite": "latest",
-        "astro": "latest",
-        "react": "latest",
-        "react-dom": "latest",
-        "tailwindcss": "latest",
+        "@astrojs/react": "^4.2.7",
+        "@fontsource-variable/inter": "^5.2.5",
+        "@tailwindcss/vite": "^4.1.6",
+        "astro": "5.7.12",
+        "prettier": "^3.5.3",
+        "prettier-plugin-astro": "^0.14.1",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "tailwindcss": "^4.1.6",
       },
     },
   },
@@ -539,6 +541,10 @@
 
     "postcss": ["postcss@8.5.3", "", { "dependencies": { "nanoid": "^3.3.8", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, ""],
 
+    "prettier": ["prettier@3.5.3", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw=="],
+
+    "prettier-plugin-astro": ["prettier-plugin-astro@0.14.1", "", { "dependencies": { "@astrojs/compiler": "^2.9.1", "prettier": "^3.0.0", "sass-formatter": "^0.7.6" } }, "sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw=="],
+
     "prismjs": ["prismjs@1.30.0", "", {}, ""],
 
     "prompts": ["prompts@2.4.2", "", { "dependencies": { "kleur": "^3.0.3", "sisteransi": "^1.0.5" } }, ""],
@@ -591,6 +597,10 @@
 
     "rollup": ["rollup@4.40.0", "", { "dependencies": { "@types/estree": "1.0.7" }, "optionalDependencies": { "@rollup/rollup-win32-x64-msvc": "4.40.0" }, "bin": "dist/bin/rollup" }, ""],
 
+    "s.color": ["s.color@0.0.15", "", {}, "sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA=="],
+
+    "sass-formatter": ["sass-formatter@0.7.9", "", { "dependencies": { "suf-log": "^2.5.3" } }, "sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw=="],
+
     "scheduler": ["scheduler@0.26.0", "", {}, ""],
 
     "semver": ["semver@7.7.1", "", { "bin": "bin/semver.js" }, ""],
@@ -614,6 +624,8 @@
     "stringify-entities": ["stringify-entities@4.0.4", "", { "dependencies": { "character-entities-html4": "^2.0.0", "character-entities-legacy": "^3.0.0" } }, ""],
 
     "strip-ansi": ["strip-ansi@7.1.0", "", { "dependencies": { "ansi-regex": "^6.0.1" } }, ""],
+
+    "suf-log": ["suf-log@2.5.3", "", { "dependencies": { "s.color": "0.0.15" } }, "sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow=="],
 
     "tailwindcss": ["tailwindcss@4.1.6", "", {}, "sha512-j0cGLTreM6u4OWzBeLBpycK0WIh8w7kSwcUsQZoGLHZ7xDTdM69lN64AgoIEEwFi0tnhs4wSykUa5YWxAzgFYg=="],
 
