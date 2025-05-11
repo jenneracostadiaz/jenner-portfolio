@@ -51,4 +51,4 @@ jobs:
 
       - name: Build with Astro
         if: success()
-        run: ${{ steps.detect-package-manager.outputs.runner }} build
+        run: ${{ steps.detect-package-manager.outputs.runner }} run build
