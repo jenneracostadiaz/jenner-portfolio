@@ -41,9 +41,9 @@ jobs:
           path: |
             ~/.bun/install/cache
             .next/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}-
+            ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}-
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
@@ -51,4 +51,4 @@ jobs:
 
       - name: Build with Astro
         if: success()
-        run: ${{ steps.detect-package-manager.outputs.runner }} run build
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build
