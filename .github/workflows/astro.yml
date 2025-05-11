@@ -3,7 +3,6 @@ name: CI Astro Porfolio
 on:
   push:
     branches: [ "main" ]
-
   pull_request:
     branches: [ "main" ]
 
@@ -38,14 +37,18 @@ jobs:
             exit 1
           fi
 
+      - name: Debug detected package manager
+        run: |
+          echo "Detected manager: ${{ steps.use-bun-package-manager.outputs.manager }}"
+
       - name: Setup Bun
-        if: steps.detect-package-manager.outputs.manager == 'bun'
+        if: steps.use-bun-package-manager.outputs.manager == 'bun'
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
       - name: Setup Bun cache
-        if: steps.detect-package-manager.outputs.manager == 'bun'
+        if: steps.use-bun-package-manager.outputs.manager == 'bun'
         uses: actions/cache@v4
         with:
           path: |
@@ -57,7 +60,7 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.use-bun-package-manager.outputs.manager }} ${{ steps.use-bun-package-manager.outputs.command }}
 
       - name: Build with Astro
         if: success()
