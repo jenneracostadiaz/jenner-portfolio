@@ -1,18 +1,16 @@
 ---
 import { SITE_URL } from '../../consts';
 
-
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+    title: string;
+    description: string;
+    image?: string;
 }
 
 const baseURL = Astro.site?.toString() || SITE_URL;
 const canonicalURL = new URL(Astro.url.pathname, baseURL);
 
 const { title, description, image = '/seo/blog-seo.jpg' } = Astro.props;
-
 ---
 
 <!-- Global Metadata -->
