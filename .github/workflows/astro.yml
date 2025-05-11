@@ -1,0 +1,54 @@
+name: CI Astro Porfolio
+
+on:
+  push:
+    branches: [ "main" ]
+
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Bun Package Manager
+        id: use-bun-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/bun.lockb" ]; then
+            echo "manager=bun" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=bun run" >> $GITHUB_OUTPUT
+            exit 0
+          else
+          echo "Bun manager not detected (bun.lockb not found)"
+          exit 1
+          fi
+
+      - name: Setup Bun
+        if: steps.detect-package-manager.outputs.manager == 'bun'
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Setup Bun cache
+        if: steps.detect-package-manager.outputs.manager == 'bun'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+            .next/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}-
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Build with Astro
+        if: success()
+        run: ${{ steps.detect-package-manager.outputs.runner }} build
