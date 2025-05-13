@@ -1,0 +1,8 @@
+---
+import Card from './Card.astro';
+const allBlogs = Object.values(import.meta.glob('../../pages/blog/*.md', { eager: true }));
+---
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 my-16">
+    {allBlogs.map((blog: any) =>
+        <Card blog={blog} />)}
+</div>

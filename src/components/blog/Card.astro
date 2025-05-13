@@ -1,0 +1,18 @@
+---
+import { CldImage } from 'astro-cloudinary';
+const { blog } = Astro.props;
+console.log(blog);
+---
+<article>
+    <a href={blog.url}
+       class="flex flex-col gap-4 p-4 cursor-pointer bg-neutral-800 rounded-lg shadow-md outline-4 outline-neutral-400/15 hover:shadow-2xl hover:shadow-neutral-800 transition-shadow duration-500">
+        <CldImage
+            src={blog.frontmatter.imageCover}
+            width={640}
+            height={500}
+            alt={blog.frontmatter.title}
+            class="object-cover rounded-lg"
+        />
+        <h2 class="font-thin text-4xl">{blog.frontmatter.title}</h2>
+    </a>
+</article>
