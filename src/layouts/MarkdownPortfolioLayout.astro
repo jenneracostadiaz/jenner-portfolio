@@ -4,12 +4,13 @@ import TextGradient from '../components/elements/TextGradient.astro';
 import { CldImage } from 'astro-cloudinary';
 import { Github } from '../components/icons';
 import Image from 'astro/components/Image.astro';
+import Markdown from '../components/library/Markdown.astro';
 
 const { frontmatter } = Astro.props;
 ---
 
 <Layout>
-    <main class="w-11/12 max-w-6xl mx-auto my-36 text-neutral-300/80 flex flex-col gap-12">
+    <section class="w-11/12 max-w-6xl mx-auto my-36 text-neutral-300/80 flex flex-col gap-12">
         <div class="grid lg:grid-cols-5 items-center gap-8">
             <div class="col-span-2 flex flex-col gap-4">
                 <div class="flex flex-col">
@@ -67,21 +68,9 @@ const { frontmatter } = Astro.props;
                 </a>
             </nav>
         </aside>
-        <main
-            id="overview"
-            class="
-                max-w-2xl m-auto
-                [&>h2]:font-light [&>h2]:text-3xl [&>h2]:mb-4 [&>h2]:mt-12
-                [&>p]:font-light [&>p]:mb-2
-                [&>table]:my-4 [&>table]:text-sm
-                [&>table>thead]:border-b [&>table>thead]:text-left
-                [&>table>tbody>tr]:border-b [&>table>tbody>tr>td]:py-4 [&>table>tbody>tr>td]:px-2
-                [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4 [&>ul]:font-light [&>ul>li]:py-1
-                [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4 [&>ol]:font-light [&>ol>li]:py-1
-            "
-        >
+        <Markdown>
             <slot />
-        </main>
+        </Markdown>
         <section id="gallery" class="grid gap-4 pt-4">
             {
                 frontmatter.images.map((image: string, index: number) => (
@@ -95,5 +84,5 @@ const { frontmatter } = Astro.props;
                 ))
             }
         </section>
-    </main>
+    </section>
 </Layout>
