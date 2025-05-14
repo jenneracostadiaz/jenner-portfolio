@@ -1,7 +1,11 @@
 ---
+layout: ../../layouts/MarkdownBlogLayout.astro
 title: 'What is frontend vs backend?'
 description: 'We explain the difference between frontend and backend development using real code examples and clear terms'
 imageCover: 'Blog/meto2mzawcekar8pow6h'
+author: 'Jenner Acosta'
+date: '2025-05-13'
+category: 'web-develop'
 ---
 
 ¡Hey! What’s up, my dev friends! 👋
