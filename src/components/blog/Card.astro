@@ -1,18 +1,30 @@
 ---
 import { CldImage } from 'astro-cloudinary';
-const { blog } = Astro.props;
-console.log(blog);
+const { blog, class: className } = Astro.props;
+const id = blog.url.split('/').pop();
+const date = new Date(blog.frontmatter.date).toLocaleDateString('en-US', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+});
 ---
-<article>
+<article id={id} class:list={className}>
     <a href={blog.url}
-       class="flex flex-col gap-4 p-4 cursor-pointer bg-neutral-800 rounded-lg shadow-md outline-4 outline-neutral-400/15 hover:shadow-2xl hover:shadow-neutral-800 transition-shadow duration-500">
+       class="grid grid-cols-1 sm:grid-cols-2 sm:flex-row rounded-2xl overflow text-neutral-300/90 bg-neutral-950/50">
         <CldImage
             src={blog.frontmatter.imageCover}
-            width={640}
-            height={500}
+            height={480}
             alt={blog.frontmatter.title}
-            class="object-cover rounded-lg"
+            class="object-cover !aspect-square rounded-tl-2xl rounded-tr-2xl sm:rounded-tr-none sm:rounded-bl-2xl"
+            loading="eager"
         />
-        <h2 class="font-thin text-4xl">{blog.frontmatter.title}</h2>
+        <div class="flex-1 p-8 flex flex-col justify-between">
+            <p class="font-light text-xs uppercase border-l border-primary-500 pl-2">{blog.frontmatter.category}</p>
+            <div class="flex flex-col gap-2">
+                <h2 class="text-3xl">{blog.frontmatter.title}</h2>
+                <p class="font-light">{blog.frontmatter.description}</p>
+            </div>
+            <p class="text-sm">{blog.frontmatter.author} · {date}</p>
+        </div>
     </a>
 </article>
