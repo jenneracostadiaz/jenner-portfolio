@@ -7,9 +7,11 @@ import Image from 'astro/components/Image.astro';
 import Markdown from '../components/library/Markdown.astro';
 
 const { frontmatter } = Astro.props;
+
+const ogImageUrl = `https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,w_1200,h_630/${frontmatter.imageCover}.jpg`;
 ---
 
-<Layout>
+<Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={ogImageUrl}>
     <section class="w-11/12 max-w-6xl mx-auto my-36 text-neutral-300/80 flex flex-col gap-12">
         <div class="grid lg:grid-cols-5 items-center gap-8">
             <div class="col-span-2 flex flex-col gap-4">
