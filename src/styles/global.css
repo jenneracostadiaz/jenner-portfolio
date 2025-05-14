@@ -39,3 +39,13 @@
         opacity: 1;
     }
 }
+
+
+* {
+    scroll-behavior: smooth;
+    outline: none
+}
+
+#overview a {
+    color: var(--color-primary-400);
+}
