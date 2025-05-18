@@ -6,9 +6,11 @@ import NavDataContact from './NavDataContact.astro';
 ---
 
 <footer class="flex flex-col items-center justify-center py-12">
-    <Brand />
+    <Brand loading="lazy" />
     <p class="text-xs font-light my-4">
-        Develop your <TextGradient>dreams</TextGradient> with me
+        Develop your
+        <TextGradient>dreams</TextGradient>
+        with me
     </p>
     <NavSocials />
     <NavDataContact />
