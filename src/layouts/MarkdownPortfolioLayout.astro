@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import TextGradient from '../components/elements/TextGradient.astro';
 import { CldImage } from 'astro-cloudinary';
+import { getCldImageUrl } from 'astro-cloudinary/helpers';
 import Github from '../components/icons/Icons/Github.astro';
 import Image from 'astro/components/Image.astro';
 import Markdown from '../components/library/Markdown.astro';
@@ -9,7 +10,7 @@ import { v2 as cloudinary } from 'cloudinary';
 
 const { frontmatter } = Astro.props;
 
-const ogImageUrl = `https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,w_1200,h_630/${frontmatter.imageCover}.jpg`;
+const coverUrl: string = getCldImageUrl({ src: frontmatter.imageCover });
 
 cloudinary.config({
     cloud_name: import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -18,7 +19,7 @@ cloudinary.config({
 });
 
 const extractAltFromPublicId = (publicId: string): string => {
-    const baseName = publicId.split('/').pop().split('.')[0];
+    const baseName = publicId.split('/').pop()?.split('.')[0] ?? '';
     return baseName
         .replace(/[-_]/g, ' ')
         .replace(/\w\S*/g, (word: string) => (
@@ -49,7 +50,7 @@ const images = result.resources.map((resource: {
     height: number;
     format: string;
 }) => {
-    let altText = '';
+    let altText: string;
 
     if (resource.context && resource.context.custom && resource.context.custom.alt) {
         altText = resource.context.custom.alt;
@@ -75,7 +76,7 @@ const images = result.resources.map((resource: {
 });
 ---
 
-<Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={ogImageUrl}>
+<Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={coverUrl}>
     <section class="w-11/12 max-w-6xl mx-auto my-8 lg:my-36 text-neutral-300/80 flex flex-col gap-12">
 
         <div class="grid lg:grid-cols-5 items-center gap-8">
@@ -109,11 +110,12 @@ const images = result.resources.map((resource: {
                 </div>
             </div>
             <div class="order-1 lg:order-2 col-span-3 flex">
-                <CldImage
-                    src={frontmatter.imageCover}
+                <Image
+                    src={coverUrl}
                     alt={frontmatter.title}
                     width={1200}
                     height={685}
+                    loading={'eager'}
                     class="rounded-2xl shadow-2xl shadow-neutral-700/50"
                 />
             </div>
