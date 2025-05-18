@@ -76,22 +76,22 @@ const images = result.resources.map((resource: {
 ---
 
 <Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={ogImageUrl}>
-    <section class="w-11/12 max-w-6xl mx-auto my-36 text-neutral-300/80 flex flex-col gap-12">
+    <section class="w-11/12 max-w-6xl mx-auto my-8 lg:my-36 text-neutral-300/80 flex flex-col gap-12">
 
         <div class="grid lg:grid-cols-5 items-center gap-8">
-            <div class="col-span-2 flex flex-col gap-4">
+            <div class="order-2 lg:order-1 col-span-2 flex flex-col gap-4 text-center lg:text-left">
                 <div class="flex flex-col">
-                    <h1 class="text-5xl font-bold">
+                    <h1 class="text-3xl lg:text-5xl font-bold">
                         <TextGradient class="from-neutral-300/80 to-neutral-500/70">{frontmatter.title}</TextGradient>
                     </h1>
                     <p class="text-xs font-medium text-neutral-300">{frontmatter.role}</p>
                 </div>
                 <div>
                     <p class="font-light">{frontmatter.description}</p>
-                    <p class="text-sm font-medium text-neutral-300">Client: {frontmatter.company}</p>
+                    <p class="text-xs font-medium text-neutral-300 my-2">Client: {frontmatter.company}</p>
                 </div>
                 <div
-                    class="flex flex-wrap gap-2 max-w-10/12">
+                    class="flex flex-wrap gap-2 justify-center lg:justify-start max-w-[95%] lg:max-w-none m-auto">
                     {
                         frontmatter.tech.map((tech: string) => (
                             <a
@@ -108,7 +108,7 @@ const images = result.resources.map((resource: {
                     }
                 </div>
             </div>
-            <div class="col-span-3 flex">
+            <div class="order-1 lg:order-2 col-span-3 flex">
                 <CldImage
                     src={frontmatter.imageCover}
                     alt={frontmatter.title}
