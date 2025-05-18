@@ -26,8 +26,8 @@ const { post } = Astro.props;
             <p class="text-neutral-400 line-clamp-3">
                 {post.frontmatter.description}
             </p>
-            <ul class="flex flex-wrap gap-2">
-                {post.frontmatter.tech.map((item: any) => (
+            <ul class="flex flex-wrap gap-2 max-h-16 overflow-hidden">
+                {post.frontmatter.tech.map((item: string) => (
                     <li class="text-neutral-400 text-sm font-light bg-neutral-700 px-2 py-1 rounded-md">
                         {item}
                     </li>
