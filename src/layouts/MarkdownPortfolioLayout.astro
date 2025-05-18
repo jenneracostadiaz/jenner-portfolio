@@ -122,7 +122,7 @@ const images = result.resources.map((resource: {
         </div>
 
         <aside
-            class="flex justify-between items-center gap-4 p-4 font-light text-xs bg-neutral-800 rounded-lg shadow-md outline-4 outline-neutral-400/15 hover:shadow-2xl hover:shadow-neutral-800 transition-shadow duration-500">
+            class="flex flex-col md:flex-row justify-between items-center gap-4 p-4 font-light text-xs bg-neutral-800 rounded-lg shadow-md outline-4 outline-neutral-400/15 hover:shadow-2xl hover:shadow-neutral-800 transition-shadow duration-500">
             <nav class="flex gap-4 items-center">
                 <span
                     class="bg-gradient-to-r from-primary-700 to-primary-500 text-neutral-300 text-xs font-light px-2 py-1 rounded-md">
@@ -134,25 +134,42 @@ const images = result.resources.map((resource: {
                 <a href="#overview">Overview</a>|<a href="#gallery">Gallery</a>
             </nav>
             <nav class="flex gap-2 items-center">
-                <p>External Links:</p>
-                <a href={frontmatter.demoLink} target="_blank">{frontmatter.demoLink}</a>
-                <a href={frontmatter.gitHub} target="_blank" class="bg-neutral-900">
-                    <Github size="sm" class="fill-neutral-400" />
-                </a>
-                <a href={frontmatter.deepWiki} target="_blank">
-                    <Image
-                        src="https://deepwiki.com/icon.png"
-                        alt="Deep Wiki Info"
-                        width={16}
-                        height={16}
-                        loading="eager"
-                    />
-                </a>
+                <p class="hidden lg:block">External Links:</p>
+
+                {
+                    frontmatter.demoLink && (
+                        <a href={frontmatter.demoLink} target="_blank">{frontmatter.demoLink}</a>
+                    )
+                }
+
+                {
+                    frontmatter.gitHub && (
+                        <a href={frontmatter.gitHub} target="_blank" class="bg-neutral-900">
+                            <Github size="sm" class="fill-neutral-400" />
+                        </a>
+                    )
+                }
+
+                {
+                    frontmatter.deepWiki && (
+                        <a href={frontmatter.deepWiki} target="_blank">
+                            <Image
+                                src="https://deepwiki.com/icon.png"
+                                alt="Deep Wiki Info"
+                                width={16}
+                                height={16}
+                                loading="eager"
+                            />
+                        </a>
+                    )
+                }
             </nav>
         </aside>
+
         <Markdown>
             <slot />
         </Markdown>
+        
         <section id="gallery" class="grid gap-4 pt-4">
             {
                 images.map((image: { public_id: string; alt: string; }, index: number) => (
