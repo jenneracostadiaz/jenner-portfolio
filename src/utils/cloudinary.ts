@@ -10,19 +10,6 @@ cloudinary.config({
 });
 
 /**
- * Extracts alt text from a Cloudinary public ID
- */
-export const extractAltFromPublicId: (publicId: string) => string = (publicId: string) => {
-    const baseName = publicId.split('/').pop()?.split('.')[0] ?? '';
-    return baseName
-        .replace(/[-_]/g, ' ')
-        .replace(
-            /\w\S*/g,
-            (word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        );
-};
-
-/**
  * Retrieves gallery images from Cloudinary
  */
 export const getGalleryImages: (galleryPrefix: string) => Promise<GalleryImage[]> = async (
@@ -38,13 +25,12 @@ export const getGalleryImages: (galleryPrefix: string) => Promise<GalleryImage[]
         });
 
         return result.resources.map((resource: CloudinaryResource) => {
-            const altText: string = extractAltFromPublicId(resource.public_id);
             const imageUrl: string = getCldImageUrl({ src: resource.public_id });
 
             return {
                 public_id: resource.public_id,
                 imageUrl: imageUrl,
-                alt: altText,
+                alt: resource.display_name,
                 width: resource.width,
                 height: resource.height,
                 format: resource.format,

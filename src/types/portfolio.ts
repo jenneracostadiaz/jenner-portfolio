@@ -34,6 +34,7 @@ export interface CloudinaryResource {
         alt?: string;
     };
     public_id: string;
+    display_name: string;
     width: number;
     height: number;
     format: string;
