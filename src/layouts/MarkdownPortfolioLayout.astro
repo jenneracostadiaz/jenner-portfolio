@@ -1,183 +1,65 @@
 ---
 import Layout from './Layout.astro';
-import TextGradient from '../components/elements/TextGradient.astro';
+import Header from '../components/portfolio/Header.astro';
+import Navbar from '../components/portfolio/Navbar.astro';
+import Gallery from '../components/portfolio/Gallery.astro';
 import { getCldImageUrl } from 'astro-cloudinary/helpers';
-import Github from '../components/icons/Icons/Github.astro';
-import Image from 'astro/components/Image.astro';
-import Markdown from '../components/library/Markdown.astro';
-import { v2 as cloudinary } from 'cloudinary';
+import { getGalleryImages } from '../utils/cloudinary';
+import type { Frontmatter, GalleryImage } from '../types/portfolio';
+
+interface Props {
+    frontmatter: Frontmatter;
+}
 
 const { frontmatter } = Astro.props;
-
 const coverUrl: string = getCldImageUrl({ src: frontmatter.imageCover });
-
-cloudinary.config({
-    cloud_name: import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME,
-    api_key: import.meta.env.PUBLIC_CLOUDINARY_API_KEY,
-    api_secret: import.meta.env.CLOUDINARY_API_SECRET,
-});
-
-const extractAltFromPublicId = (publicId: string): string => {
-    const baseName = publicId.split('/').pop()?.split('.')[0] ?? '';
-    return baseName
-        .replace(/[-_]/g, ' ')
-        .replace(/\w\S*/g, (word: string) => (
-            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        ));
-};
-
-const result = await cloudinary.api.resources({
-    type: 'upload',
-    prefix: frontmatter.gallery + '/',
-    max_results: 500,
-    context: true,
-    metadata: true,
-});
-
-const images = result.resources.map((resource: {
-    context?: {
-        custom?: {
-            alt?: string;
-            caption?: string;
-        };
-    };
-    metadata?: {
-        alt?: string;
-    };
-    public_id: string;
-    imageUrl: string;
-    width: number;
-    height: number;
-    format: string;
-}) => {
-    const altText: string = extractAltFromPublicId(resource.public_id);
-    const imageUrl: string = getCldImageUrl({ src: resource.public_id });
-
-    return {
-        public_id: resource.public_id,
-        imageUrl: imageUrl,
-        alt: altText,
-        width: resource.width,
-        height: resource.height,
-        format: resource.format,
-    };
-});
+const images: GalleryImage[] = await getGalleryImages(frontmatter.gallery);
 ---
 
 <Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={coverUrl}>
     <section class="w-11/12 max-w-6xl mx-auto my-8 lg:my-36 text-neutral-300/80 flex flex-col gap-12">
+        <Header
+            title={frontmatter.title}
+            role={frontmatter.role}
+            description={frontmatter.description}
+            company={frontmatter.company}
+            tech={frontmatter.tech}
+            coverUrl={coverUrl}
+        />
 
-        <div class="grid lg:grid-cols-5 items-center gap-8">
-            <div class="order-2 lg:order-1 col-span-2 flex flex-col gap-4 text-center lg:text-left">
-                <div class="flex flex-col">
-                    <h1 class="text-3xl lg:text-5xl font-bold">
-                        <TextGradient class="from-neutral-300/80 to-neutral-500/70">{frontmatter.title}</TextGradient>
-                    </h1>
-                    <p class="text-xs font-medium text-neutral-300">{frontmatter.role}</p>
-                </div>
-                <div>
-                    <p class="font-light">{frontmatter.description}</p>
-                    <p class="text-xs font-medium text-neutral-300 my-2">Client: {frontmatter.company}</p>
-                </div>
-                <div
-                    class="flex flex-wrap gap-2 justify-center lg:justify-start max-w-[95%] lg:max-w-none m-auto">
-                    {
-                        frontmatter.tech.map((tech: string) => (
-                            <a
-                                href={`/portfolio?tech=${tech}`}
-                                class="text-neutral-300/90 hover:text-neutral-100 transition-colors duration-300
-                                         font-mono text-xs py-1 px-2 rounded bg-neutral-800/50 hover:bg-neutral-700/60
-                                         border border-neutral-700/50 hover:border-neutral-600/80
-                                         before:content-['<'] before:mr-1 before:opacity-70
-                                         after:content-['/>'] after:ml-1 after:opacity-70"
-                            >
-                                {tech}
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-            <div class="order-1 lg:order-2 col-span-3 flex">
-                <Image
-                    src={coverUrl}
-                    alt={frontmatter.title}
-                    width={1200}
-                    height={685}
-                    loading={'eager'}
-                    class="rounded-2xl shadow-2xl shadow-neutral-700/50"
-                />
-            </div>
-        </div>
+        <Navbar
+            category={frontmatter.category}
+            date={frontmatter.date}
+            duration={frontmatter.duration}
+            demoLink={frontmatter.demoLink}
+            gitHub={frontmatter.gitHub}
+            deepWiki={frontmatter.deepWiki}
+        />
 
-        <aside
-            class="flex flex-col md:flex-row justify-between items-center gap-4 p-4 font-light text-xs bg-neutral-800 rounded-lg shadow-md outline-4 outline-neutral-400/15 hover:shadow-2xl hover:shadow-neutral-800 transition-shadow duration-500">
-            <nav class="flex gap-4 items-center">
-                <span
-                    class="bg-gradient-to-r from-primary-700 to-primary-500 text-neutral-300 text-xs font-light px-2 py-1 rounded-md">
-                    {frontmatter.category}
-                </span>
-                <p>{frontmatter.date} / {frontmatter.duration}</p>
-            </nav>
-            <nav class="flex-1 flex justify-center gap-2">
-                <a href="#overview">Overview</a>|<a href="#gallery">Gallery</a>
-            </nav>
-            <nav class="flex gap-2 items-center">
-                <p class="hidden lg:block">External Links:</p>
-
-                {
-                    frontmatter.demoLink && (
-                        <a href={frontmatter.demoLink} target="_blank">{frontmatter.demoLink}</a>
-                    )
-                }
-
-                {
-                    frontmatter.gitHub && (
-                        <a href={frontmatter.gitHub} target="_blank" class="bg-neutral-900">
-                            <Github size="sm" class="fill-neutral-400" />
-                        </a>
-                    )
-                }
-
-                {
-                    frontmatter.deepWiki && (
-                        <a href={frontmatter.deepWiki} target="_blank">
-                            <Image
-                                src="https://deepwiki.com/icon.png"
-                                alt="Deep Wiki Info"
-                                width={16}
-                                height={16}
-                                loading="eager"
-                            />
-                        </a>
-                    )
-                }
-            </nav>
-        </aside>
-
-        <Markdown>
+        <main
+            id="overview"
+            class="
+                w-11/12 max-w-2xl m-auto
+                [&>h2]:font-light [&>h2]:text-3xl [&>h2]:mb-4 [&>h2]:mt-12
+                [&>h3]:font-light [&>h3]:text-2xl [&>h3]:mb-2 [&>h3]:mt-6
+                [&>p]:mb-2
+                [&>strong]:font-bold
+                [&>table]:my-4 [&>table]:text-sm
+                [&>table>thead]:border-b [&>table>thead]:text-left
+                [&>table>tbody>tr]:border-b [&>table>tbody>tr>td]:py-4 [&>table>tbody>tr>td]:px-2
+                [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4 [&>ul>li]:py-1
+                [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4 [&>ol>li]:py-1
+                [&>pre]:p-6 [&>pre]:my-8 [&>pre]:relative [&>pre]:!bg-neutral-950/35 [&>pre]:rounded-md
+                [&>hr]:my-8
+                [&>a]:bg-primary-400
+            "
+        >
             <slot />
-        </Markdown>
+            <script>
+                import '../scripts/copyCodeButton';
+            </script>
+        </main>
 
-        <section id="gallery" class="grid gap-4 pt-4">
-            {
-                images.map((image: { public_id: string; alt: string; imageUrl: string; }, index: number) => (
-                    <div class="image-container relative overflow-hidden rounded-xl">
-                        <Image
-                            src={image.imageUrl}
-                            alt={image.alt || `${frontmatter.title} imagen ${index + 1}`}
-                            width={1152}
-                            height={648}
-                            class="rounded-xl"
-                            loading="lazy"
-
-                        />
-                        <div class="absolute bottom-0 w-full bg-black bg-opacity-60 p-2 text-white text-sm">
-                            {image.alt}
-                        </div>
-
-                    </div>
-                ))
-            }
-        </section>
+        <Gallery images={images} title={frontmatter.title} />
     </section>
 </Layout>
