@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPortfolioLayout.astro
 title: 'Wallet'
 description: 'Wallet is a web application that allows users to manage their personal finances, track expenses and income, and get out of debt through its comprehensive financial management system. It serves as a simple and easy-to-use tool that helps users take control of their money and achieve their financial goals by providing capabilities for transaction recording, categorization, account management, and financial reporting.'
-date: '2024-11-20'
+date: '2025-02-20'
 duration: 'currently working'
 
 category: 'open-source' # categoría principal: 'freelance', 'personal', 'colaboración', 'open-source'
@@ -10,15 +10,11 @@ tech: [ 'Laravel', 'Livewire', 'Alpine.js', 'TailwindCSS', 'Eloquent ORM', 'MySQ
 
 featured: true
 imageCover: 'Portfolio/wallet/nff1gmg6rzabnyzjyce2'
-images: [ 'Portfolio/wallet/nff1gmg6rzabnyzjyce2', 'Portfolio/wallet/lpsvtskca5pumbhxwoks', 'Portfolio/wallet/frt35oeq9xumj4wvygfv', 'Portfolio/wallet/bv7xxxa9m8j0sttpwlzc', 'Portfolio/wallet/nn8x0dfalyqwyos0sosg' ]
+gallery: 'Portfolio/wallet'
 
 demoLink: 'https://wallet.jenner.pe'
 gitHub: 'https://github.com/jenneracostadiaz/wallet-v2'
 deepWiki: 'https://deepwiki.com/jenneracostadiaz/wallet-v2'
-
-#role: 'Fullstack Developer' # tu rol en el proyecto
-#company: 'Empresa X' # opcional
-#collaboration: false # si fue una colaboración o no
 ---
 
 ## Take Control of Your Finances
