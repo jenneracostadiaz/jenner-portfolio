@@ -1,7 +1,6 @@
 ---
 import Layout from './Layout.astro';
 import TextGradient from '../components/elements/TextGradient.astro';
-import { CldImage } from 'astro-cloudinary';
 import { getCldImageUrl } from 'astro-cloudinary/helpers';
 import Github from '../components/icons/Icons/Github.astro';
 import Image from 'astro/components/Image.astro';
@@ -46,28 +45,17 @@ const images = result.resources.map((resource: {
         alt?: string;
     };
     public_id: string;
+    imageUrl: string;
     width: number;
     height: number;
     format: string;
 }) => {
-    let altText: string;
-
-    if (resource.context && resource.context.custom && resource.context.custom.alt) {
-        altText = resource.context.custom.alt;
-    } else if (resource.context && resource.context.custom && resource.context.custom.caption) {
-        altText = resource.context.custom.caption;
-    } else if (resource.metadata && resource.metadata.alt) {
-        altText = resource.metadata.alt;
-    } else {
-        altText = extractAltFromPublicId(resource.public_id);
-    }
-
-    if (!altText) {
-        altText = `${frontmatter.title} - imagen`;
-    }
+    const altText: string = extractAltFromPublicId(resource.public_id);
+    const imageUrl: string = getCldImageUrl({ src: resource.public_id });
 
     return {
         public_id: resource.public_id,
+        imageUrl: imageUrl,
         alt: altText,
         width: resource.width,
         height: resource.height,
@@ -169,18 +157,18 @@ const images = result.resources.map((resource: {
         <Markdown>
             <slot />
         </Markdown>
-        
+
         <section id="gallery" class="grid gap-4 pt-4">
             {
-                images.map((image: { public_id: string; alt: string; }, index: number) => (
+                images.map((image: { public_id: string; alt: string; imageUrl: string; }, index: number) => (
                     <div class="image-container relative overflow-hidden rounded-xl">
-                        <CldImage
-                            src={image.public_id}
+                        <Image
+                            src={image.imageUrl}
                             alt={image.alt || `${frontmatter.title} imagen ${index + 1}`}
                             width={1152}
                             height={648}
                             class="rounded-xl"
-                            loading={index < 6 ? 'eager' : 'lazy'}
+                            loading="lazy"
 
                         />
                         <div class="absolute bottom-0 w-full bg-black bg-opacity-60 p-2 text-white text-sm">
