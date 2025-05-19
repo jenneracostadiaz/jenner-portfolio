@@ -6,6 +6,7 @@ import Gallery from '../components/portfolio/Gallery.astro';
 import { getCldImageUrl } from 'astro-cloudinary/helpers';
 import { getGalleryImages } from '../utils/cloudinary';
 import type { Frontmatter, GalleryImage } from '../types/portfolio';
+import Markdown from '../components/library/Markdown.astro';
 
 interface Props {
     frontmatter: Frontmatter;
@@ -16,8 +17,14 @@ const coverUrl: string = getCldImageUrl({ src: frontmatter.imageCover });
 const images: GalleryImage[] = await getGalleryImages(frontmatter.gallery);
 ---
 
-<Layout title={`${frontmatter.title} - Project`} description={frontmatter.description} image={coverUrl}>
-    <section class="w-11/12 max-w-6xl mx-auto my-8 lg:my-36 text-neutral-300/80 flex flex-col gap-12">
+<Layout
+    title={`${frontmatter.title} - Project`}
+    description={frontmatter.description}
+    image={coverUrl}
+>
+    <section
+        class="w-11/12 max-w-6xl mx-auto my-8 lg:my-36 text-neutral-300/80 flex flex-col gap-12"
+    >
         <Header
             title={frontmatter.title}
             role={frontmatter.role}
@@ -36,29 +43,9 @@ const images: GalleryImage[] = await getGalleryImages(frontmatter.gallery);
             deepWiki={frontmatter.deepWiki}
         />
 
-        <main
-            id="overview"
-            class="
-                w-11/12 max-w-2xl m-auto
-                [&>h2]:font-light [&>h2]:text-3xl [&>h2]:mb-4 [&>h2]:mt-12
-                [&>h3]:font-light [&>h3]:text-2xl [&>h3]:mb-2 [&>h3]:mt-6
-                [&>p]:mb-2
-                [&>strong]:font-bold
-                [&>table]:my-4 [&>table]:text-sm
-                [&>table>thead]:border-b [&>table>thead]:text-left
-                [&>table>tbody>tr]:border-b [&>table>tbody>tr>td]:py-4 [&>table>tbody>tr>td]:px-2
-                [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:my-4 [&>ul>li]:py-1
-                [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:my-4 [&>ol>li]:py-1
-                [&>pre]:p-6 [&>pre]:my-8 [&>pre]:relative [&>pre]:!bg-neutral-950/35 [&>pre]:rounded-md
-                [&>hr]:my-8
-                [&>a]:bg-primary-400
-            "
-        >
+        <Markdown>
             <slot />
-            <script>
-                import '../scripts/copyCodeButton';
-            </script>
-        </main>
+        </Markdown>
 
         <Gallery images={images} title={frontmatter.title} />
     </section>

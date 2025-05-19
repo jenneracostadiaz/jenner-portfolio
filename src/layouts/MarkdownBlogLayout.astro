@@ -1,23 +1,24 @@
 ---
 import Layout from './Layout.astro';
 import TextGradient from '../components/elements/TextGradient.astro';
-import { CldImage } from 'astro-cloudinary';
 import Markdown from '../components/library/Markdown.astro';
 import Copy from '../components/icons/Icons/Copy.astro';
 import ButtonCopyLink from '../components/elements/ButtonCopyLink.astro';
+import { getCldImageUrl } from 'astro-cloudinary/helpers';
+import Image from 'astro/components/Image.astro';
 
 const { frontmatter } = Astro.props;
+
+const coverUrl: string = getCldImageUrl({ src: frontmatter.imageCover });
 
 const date = new Date(frontmatter.date).toLocaleDateString('en-US', {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
 });
-
-const ogImageUrl = `https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_fill,w_1200,h_630/${frontmatter.imageCover}.jpg`;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description} image={ogImageUrl}>
+<Layout title={frontmatter.title} description={frontmatter.description} image={coverUrl}>
     <section class="w-11/12 max-w-4xl mx-auto my-12 text-neutral-300/80 flex flex-col gap-12">
         <div class="flex flex-col gap-6">
             <h1 class="text-4xl lg:text-5xl font-semibold">
@@ -29,11 +30,12 @@ const ogImageUrl = `https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINA
                 {frontmatter.description}
             </p>
             <div class="relative">
-                <CldImage
-                    src={frontmatter.imageCover}
+                <Image
+                    src={coverUrl}
                     alt={frontmatter.title}
                     width={1200}
                     height={685}
+                    loading="eager"
                     class="!aspect-square md:!aspect-video object-cover"
                 />
                 <div
@@ -62,6 +64,7 @@ const ogImageUrl = `https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINA
                 </div>
             </div>
         </div>
+        
         <Markdown>
             <slot />
         </Markdown>
