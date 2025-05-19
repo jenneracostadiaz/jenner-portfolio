@@ -15,6 +15,6 @@ export const SITE_SOCIAL = {
 export const SITE_DATA_CONTACT = {
     email: 'projects@jenner.pe',
     phone: '+51 967 037 995',
-    walink: 'https://wa.me/51967037995',
+    waLink: 'https://wa.me/51967037995',
     address: 'Lima, Perú',
 };
