@@ -1,17 +1,15 @@
 ---
 import Layout from './Layout.astro';
-import TextGradient from '../components/elements/TextGradient.astro';
 import Markdown from '../components/library/Markdown.astro';
-import Copy from '../components/icons/Icons/Copy.astro';
-import ButtonCopyLink from '../components/elements/ButtonCopyLink.astro';
 import { getCldImageUrl } from 'astro-cloudinary/helpers';
-import Image from 'astro/components/Image.astro';
+import Header from '../components/blog/Header.astro';
+import Cover from '../components/blog/Cover.astro';
 
 const { frontmatter } = Astro.props;
 
 const coverUrl: string = getCldImageUrl({ src: frontmatter.imageCover });
 
-const date = new Date(frontmatter.date).toLocaleDateString('en-US', {
+const date: string = new Date(frontmatter.date).toLocaleDateString('en-US', {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
@@ -21,50 +19,19 @@ const date = new Date(frontmatter.date).toLocaleDateString('en-US', {
 <Layout title={frontmatter.title} description={frontmatter.description} image={coverUrl}>
     <section class="w-11/12 max-w-4xl mx-auto my-12 text-neutral-300/80 flex flex-col gap-12">
         <div class="flex flex-col gap-6">
-            <h1 class="text-4xl lg:text-5xl font-semibold">
-                <TextGradient class="from-neutral-300/80 to-neutral-500/70"
-                >{frontmatter.title}</TextGradient
-                >
-            </h1>
-            <p class="font-thin text-lg text-neutral-200 lg:w-8/12">
-                {frontmatter.description}
-            </p>
-            <div class="relative">
-                <Image
-                    src={coverUrl}
-                    alt={frontmatter.title}
-                    width={1200}
-                    height={685}
-                    loading="eager"
-                    class="!aspect-square md:!aspect-video object-cover"
-                />
-                <div
-                    class="w-full flex justify-between items-center gap-4 absolute bottom-0 left-0 py-6 px-7 bg-neutral-900/70 backdrop-blur-xs"
-                >
-                    <div class="flex gap-16">
-                        <div class="flex flex-col gap-2">
-                            <h3 class="text-sm">Written By</h3>
-                            <p class="font-semibold">{frontmatter.author}</p>
-                        </div>
+            <Header
+                title={frontmatter.title}
+                description={frontmatter.description}
+            />
 
-                        <div class="flex flex-col gap-2">
-                            <h3 class="text-sm">Published on</h3>
-                            <p class="font-semibold">{date}</p>
-                        </div>
-                    </div>
-
-                    <div class="flex">
-                        <ButtonCopyLink
-                            class="flex items-center gap-1 border px-2 py-1 hover:bg-neutral-800"
-                        >
-                            <Copy size="xs" />
-                            <span class="text-xs">Copy Link</span>
-                        </ButtonCopyLink>
-                    </div>
-                </div>
-            </div>
+            <Cover
+                imageUrl={coverUrl}
+                altText={frontmatter.title}
+                author={frontmatter.author}
+                publishDate={date}
+            />
         </div>
-        
+
         <Markdown>
             <slot />
         </Markdown>
