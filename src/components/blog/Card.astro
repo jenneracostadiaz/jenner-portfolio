@@ -35,7 +35,9 @@ const cardStyles = {
                         <h2 class="text-3xl font-bold leading-tight text-white drop-shadow-sm">
                             {blog.frontmatter.title}
                         </h2>
-                        <p class="font-light text-neutral-300/90">{blog.frontmatter.description}</p>
+                        <p class="font-light text-neutral-300/90 line-clamp-4">
+                            {blog.frontmatter.description}
+                        </p>
                     </div>
                     <p class="text-sm text-neutral-400 mt-4">
                         {blog.frontmatter.author} · {date}
