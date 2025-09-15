@@ -18,15 +18,11 @@ Here I’ll share how I use different tools every day, and how you can integrate
 - **How to use it:** Start or end your day with short conversations—ask for feedback on your texts, practice new words, or brainstorm ideas.
 - **Why it works:** The free plan is generous, and the Pro version can boost your productivity even more.
 
----
-
 ## 2. Research, Analysis & Studies: **Gemini**
 
 - **What it does:** Great for academic research, financial analysis, or market studies.
 - **How to use it:** Summarize long articles, compare trends, or create structured study notes.
 - **Why it works:** Perfect for students and entrepreneurs who need clarity and speed.
-
----
 
 ## 3. Programming & Development: **Claude**
 
@@ -34,15 +30,11 @@ Here I’ll share how I use different tools every day, and how you can integrate
 - **How to use it:** Use it as a coding partner—ask for code reviews, test suggestions, or project architecture ideas.
 - **Why it works:** Developers love it for its precision and adherence to good programming standards.
 
----
-
 ## 4. Creativity & Visuals: **Nano Banana (new)**
 
 - **What it does:** Generates stunning images—perfect for profile pictures, design ideas, or reimagining your workspace.
 - **How to use it:** Upload a reference or describe your vision—bedroom, office, living room—and get visual inspiration instantly.
 - **Why it works:** It has revolutionized AI image generation with high-quality, realistic results.
-
----
 
 ## A Daily AI Routine (Example)
 
@@ -51,8 +43,6 @@ Here I’ll share how I use different tools every day, and how you can integrate
 - **Coding session** → Ask Claude to refactor or review your code.
 - **Creative time** → Use Nano Banana to visualize a new design idea.
 - **Evening** → Reflect on your progress with ChatGPT.
-
----
 
 ## Final Thoughts
 
