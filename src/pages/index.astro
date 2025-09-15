@@ -7,8 +7,11 @@ import BlogGrid from '../components/blog/Grid.astro';
 
 <Layout>
     <Cover />
-    <div class="w-11/12 max-w-6xl mx-auto">
+    <section class="w-11/12 max-w-6xl mx-auto">
         <PortfolioGrid />
-        <BlogGrid />
-    </div>
+        <section>
+            <h2 class="font-thin text-4xl">Blog</h2>
+            <BlogGrid />
+        </section>
+    </section>
 </Layout>
