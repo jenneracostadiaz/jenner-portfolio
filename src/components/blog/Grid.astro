@@ -1,6 +1,14 @@
 ---
 import Card from './Card.astro';
-const allBlogs = Object.values(import.meta.glob('../../pages/blog/*.md', { eager: true })).sort(
+
+const { lang } = Astro.props as { lang: 'en' | 'es' };
+
+const localeBlogs: { en: unknown[]; es: unknown[] } = {
+    en: Object.values(import.meta.glob('../../pages/blog/*.md', { eager: true })),
+    es: Object.values(import.meta.glob('../../pages/es/blog/*.md', { eager: true })),
+};
+
+const allBlogs = Object.values(localeBlogs[lang]).sort(
     (a: any, b: any) =>
         new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
 );
