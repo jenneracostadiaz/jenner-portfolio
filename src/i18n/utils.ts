@@ -39,31 +39,48 @@ export function useTranslatedPath(lang: keyof typeof ui) {
 
 export function getRouteFromUrl(url: URL): string | undefined {
     const pathname = new URL(url).pathname;
-    const parts = pathname?.split('/');
-    const path = parts.pop() || parts.pop();
-
-    if (path === undefined) {
-        return undefined;
-    }
+    const parts = pathname?.split('/').filter(Boolean); // Remove empty strings
 
     const currentLang = getLangFromUrl(url);
 
-    if (defaultLang === currentLang) {
-        const route = Object.values(routes)[0];
-        return (route as Record<string, string>)[path] !== undefined
-            ? (route as Record<string, string>)[path]
-            : undefined;
+    // Remove language from parts if it's not the default language
+    if (currentLang !== defaultLang && parts[0] === currentLang) {
+        parts.shift();
     }
 
+    const path = parts[0]; // Get the first segment after language
+
+    if (!path) {
+        return undefined;
+    }
+
+    // For default language, check if path exists directly in routes
+    if (defaultLang === currentLang) {
+        const defaultRoutes = routes[defaultLang];
+        return (
+            Object.keys(defaultRoutes).find(
+                (key) => defaultRoutes[key as keyof typeof defaultRoutes] === `/${path}`
+            ) || path
+        );
+    }
+
+    // For non-default language, find the key that matches the translated path
+    const currentRoutes = routes[currentLang];
     const getKeyByValue = (obj: Record<string, string>, value: string): string | undefined => {
-        return Object.keys(obj).find((key) => obj[key] === value);
+        return Object.keys(obj).find((key) => obj[key] === `/${value}`);
     };
 
-    const reversedKey = getKeyByValue(routes[currentLang], path);
+    const routeKey = getKeyByValue(currentRoutes, path);
 
-    if (reversedKey !== undefined) {
-        return reversedKey;
+    if (routeKey !== undefined) {
+        return routeKey;
     }
 
-    return undefined;
+    // If no translation found, check if it's a direct match in default routes
+    const defaultRoutes = routes[defaultLang];
+    return (
+        Object.keys(defaultRoutes).find(
+            (key) => defaultRoutes[key as keyof typeof defaultRoutes] === `/${path}`
+        ) || path
+    );
 }
