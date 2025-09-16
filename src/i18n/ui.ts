@@ -9,10 +9,22 @@ export const ui = {
     en: {
         'nav.blog': 'Blog',
         'nav.portfolio': 'Portfolio',
+        '404.title': 'Page Not Found',
+        '404.message':
+            "Sorry! This content doesn't exist or is not available in the requested translation.",
+        '404.home': 'Go to Home',
+        '404.back': 'Go Back',
+        'footer.builtWith': 'Built with',
     },
     es: {
         'nav.blog': 'Blog',
         'nav.portfolio': 'Portafolio',
+        '404.title': 'Página No Encontrada',
+        '404.message':
+            '¡Lo siento! Este contenido no existe o no está disponible en el idioma solicitado.',
+        '404.home': 'Ir al Inicio',
+        '404.back': 'Volver',
+        'footer.builtWith': 'Construido con',
     },
 };
 
