@@ -21,10 +21,10 @@ export const showDefaultLang = false;
 export const routes = {
     en: {
         blog: '/blog',
-        portfolio: '/portfolio',
+        'blog/express-basic-concepts': '/blog/express-basic-concepts',
     },
     es: {
         blog: '/blog',
-        portfolio: '/portafolio',
+        'blog/express-basic-concepts': '/blog/conceptos-basicos-de-express',
     },
 };
