@@ -1,14 +1,19 @@
 ---
 import { SITE_TITLE, SITE_ICON } from '../../consts';
 import Image from 'astro/components/Image.astro';
+import { getLangFromUrl, useTranslatedPath, useTranslations } from '../../i18n/utils';
 
 const name = SITE_TITLE;
 const icon = SITE_ICON;
 
 const { loading } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<a href="/" class="flex items-center gap-2">
+<a href={translatePath('/')} class="flex items-center gap-2">
     <Image
         src={icon}
         alt={name}
