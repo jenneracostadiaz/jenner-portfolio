@@ -1,11 +1,15 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
+import LanguagePicker from './LanguagePicker.astro';
 import NavLink from './NavLink.astro';
-const blogUrl = getRelativeLocaleUrl('en', '/blog');
-const portfolioUrl = getRelativeLocaleUrl('en', '/portfolio');
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <nav class="flex items-center gap-4">
-    <NavLink href={blogUrl}>Blog</NavLink>
-    <NavLink href={portfolioUrl}>Portfolio</NavLink>
+    <NavLink href={translatePath('/blog')}>{t('nav.blog')}</NavLink>
+    <NavLink href={translatePath('/portfolio')}>{t('nav.portfolio')}</NavLink>
+    <LanguagePicker />
 </nav>
