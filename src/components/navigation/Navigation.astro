@@ -1,8 +1,11 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import NavLink from './NavLink.astro';
+const blogUrl = getRelativeLocaleUrl('en', '/blog');
+const portfolioUrl = getRelativeLocaleUrl('en', '/portfolio');
 ---
 
 <nav class="flex items-center gap-4">
-    <NavLink href="/blog">Blog</NavLink>
-    <NavLink href="/portfolio">Portfolio</NavLink>
+    <NavLink href={blogUrl}>Blog</NavLink>
+    <NavLink href={portfolioUrl}>Portfolio</NavLink>
 </nav>
