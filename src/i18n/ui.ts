@@ -21,10 +21,15 @@ export const showDefaultLang = false;
 export const routes = {
     en: {
         blog: '/blog',
+        portfolio: '/portfolio',
         'blog/express-basic-concepts': '/blog/express-basic-concepts',
+        'blog/frontend-vs-backend': '/blog/frontend-vs-backend',
+        'blog/devops': '/blog/devops',
+        'blog/level-up-your-live-with-ai': '/blog/level-up-your-live-with-ai',
     },
     es: {
         blog: '/blog',
-        'blog/express-basic-concepts': '/blog/conceptos-basicos-de-express',
+        portfolio: '/portafolio',
+        'blog/express-basic-concepts': '/blog/express-conceptos-basicos',
     },
 };
