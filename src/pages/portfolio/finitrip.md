@@ -6,7 +6,7 @@ date: '2022-03-03'
 duration: '2 years'
 
 category: 'collaboration'
-tech: [ 'PHP', 'Google Maps API', 'JavaScript', 'SASS', 'HTML', 'Wordpress' ]
+tech: ['PHP', 'Google Maps API', 'JavaScript', 'SASS', 'HTML', 'Wordpress']
 
 featured: true
 imageCover: 'Portfolio/finitrip/hvar8hcfx7m34vkzcee4'
@@ -33,33 +33,33 @@ WhatsApp) extend brand engagement.
 Finitrip specializes in vacation rentals (“fincas”) across Mallorca, emphasizing personalized service without extra
 service fees. It provides:
 
-* Catalog of 300+ properties, each manually vetted for amenities like pools and sea views.
-* Content sections including “Mallorca Geschichten” (owner and gastronomy stories) and a blog with seasonal promotions.
+- Catalog of 300+ properties, each manually vetted for amenities like pools and sea views.
+- Content sections including “Mallorca Geschichten” (owner and gastronomy stories) and a blog with seasonal promotions.
 
 ## Key Features
 
 Advanced Search: Three search modes (exact date, flexible, by name) plus filters for arrival/departure dates and party
 size.
 
-* Favorites: Users can bookmark properties for later review.
-* Pre‑reservations: Free holds with a 10 % deposit and no hidden fees.
-* Testimonials: User reviews with dates and detailed feedback to build trust.
-* Contact Methods: German and Spanish phone support, WhatsApp link, web form, and email.
+- Favorites: Users can bookmark properties for later review.
+- Pre‑reservations: Free holds with a 10 % deposit and no hidden fees.
+- Testimonials: User reviews with dates and detailed feedback to build trust.
+- Contact Methods: German and Spanish phone support, WhatsApp link, web form, and email.
 
 ## Technical Architecture
 
 ### Front‑end
 
-* **HTML5 & CSS3:** Structured markup with responsive media queries ensures usability across devices.
-* **JavaScript:** Powers dynamic search forms, cookie banner controls, and interactive property listings.
+- **HTML5 & CSS3:** Structured markup with responsive media queries ensures usability across devices.
+- **JavaScript:** Powers dynamic search forms, cookie banner controls, and interactive property listings.
 
 ### Back‑end
 
-* Custom Framework: Lack of /wp-content/ hints at a bespoke PHP (or similar) solution.
-* Database Integration: Likely MySQL or MariaDB for managing fincas, bookings, and user data securely.
+- Custom Framework: Lack of /wp-content/ hints at a bespoke PHP (or similar) solution.
+- Database Integration: Likely MySQL or MariaDB for managing fincas, bookings, and user data securely.
 
 ## Integrations & Security
 
-* Privacy & Cookies: Banner for cookie consent, linking to privacy policy and terms.
-* SEO & Performance: Clean, descriptive URLs; meta tags; minified CSS/JS; and optimized images for fast load times.
-* Social Media: Direct links to Facebook, Instagram, WhatsApp, and Messenger for cross‑channel engagement.
+- Privacy & Cookies: Banner for cookie consent, linking to privacy policy and terms.
+- SEO & Performance: Clean, descriptive URLs; meta tags; minified CSS/JS; and optimized images for fast load times.
+- Social Media: Direct links to Facebook, Instagram, WhatsApp, and Messenger for cross‑channel engagement.

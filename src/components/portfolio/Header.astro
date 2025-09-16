@@ -21,7 +21,9 @@ const { title, role, description, company, tech, coverUrl } = Astro.props;
             <p class="font-light">{description}</p>
             <p class="text-xs font-medium text-neutral-300 my-2">Client: {company}</p>
         </div>
-        <div class="flex flex-wrap gap-2 justify-center lg:justify-start max-w-[95%] lg:max-w-none m-auto">
+        <div
+            class="flex flex-wrap gap-2 justify-center lg:justify-start max-w-[95%] lg:max-w-none m-auto"
+        >
             {
                 tech.map((techItem: string) => (
                     <a

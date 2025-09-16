@@ -6,7 +6,19 @@ date: '2023-07-03'
 duration: 'currently working'
 
 category: 'collaboration'
-tech: [ 'PHP', 'Laravel', 'Livewire', 'Alpine.js', 'TailwindCSS', 'JavaScript/CSS', 'Swiper', 'Model Viewer' , 'MySQL', 'Jetstream' ]
+tech:
+    [
+        'PHP',
+        'Laravel',
+        'Livewire',
+        'Alpine.js',
+        'TailwindCSS',
+        'JavaScript/CSS',
+        'Swiper',
+        'Model Viewer',
+        'MySQL',
+        'Jetstream',
+    ]
 
 featured: true
 imageCover: 'Portfolio/phone-tool/biqehlxxtca8rxshxoxa'
@@ -25,32 +37,32 @@ companies that need to maintain an up-to-date record of their testing devices.
 
 ## Key Features
 
-* **Centralized Management:** Complete control of all mobile devices in one place
-* **Specification Tracking:** Detailed recording of technical features (operating system, version, capacity, etc.)
-* **Loan System:** Control of device assignment to team members
-* **Real-Time Reporting:** Visualization of current inventory status
-* **Responsive Interface:** Adaptable design for access from any device
+- **Centralized Management:** Complete control of all mobile devices in one place
+- **Specification Tracking:** Detailed recording of technical features (operating system, version, capacity, etc.)
+- **Loan System:** Control of device assignment to team members
+- **Real-Time Reporting:** Visualization of current inventory status
+- **Responsive Interface:** Adaptable design for access from any device
 
 ## Technologies Used
 
 ### Backend Technologies
 
-* **PHP:** The project is built using PHP 8.1 or higher
-* **Laravel Framework:** The main PHP framework used for the application
-* **Laravel Jetstream:** Used for authentication and team management
-* **Laravel Fortify:** Authentication backend implementation
-* **Livewire:** A full-stack framework for Laravel that makes building dynamic interfaces simple
+- **PHP:** The project is built using PHP 8.1 or higher
+- **Laravel Framework:** The main PHP framework used for the application
+- **Laravel Jetstream:** Used for authentication and team management
+- **Laravel Fortify:** Authentication backend implementation
+- **Livewire:** A full-stack framework for Laravel that makes building dynamic interfaces simple
 
 ### Frontend Technologies
 
-* **JavaScript/CSS:** The application uses Vite for asset compilation
-* **Tailwind CSS:** Inferred from the Vite configuration
-* **Swiper:** A modern mobile touch slider library
-* **Model Viewer:** A web component for 3D model visualization
+- **JavaScript/CSS:** The application uses Vite for asset compilation
+- **Tailwind CSS:** Inferred from the Vite configuration
+- **Swiper:** A modern mobile touch slider library
+- **Model Viewer:** A web component for 3D model visualization
 
 ### Database
 
-* Database Support: The application likely uses a relational database, as Laravel and Doctrine DBAL are included
+- Database Support: The application likely uses a relational database, as Laravel and Doctrine DBAL are included
 
 ## Challenges and Solutions
 

@@ -40,10 +40,9 @@
     }
 }
 
-
 * {
     scroll-behavior: smooth;
-    outline: none
+    outline: none;
 }
 
 #overview a {

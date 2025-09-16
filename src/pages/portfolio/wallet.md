@@ -6,7 +6,7 @@ date: '2025-02-20'
 duration: 'currently working'
 
 category: 'open-source' # categoría principal: 'freelance', 'personal', 'colaboración', 'open-source'
-tech: [ 'Laravel', 'Livewire', 'Alpine.js', 'TailwindCSS', 'Eloquent ORM', 'MySQL', 'Jetstream' ]
+tech: ['Laravel', 'Livewire', 'Alpine.js', 'TailwindCSS', 'Eloquent ORM', 'MySQL', 'Jetstream']
 
 featured: true
 imageCover: 'Portfolio/wallet/nff1gmg6rzabnyzjyce2'
@@ -49,7 +49,7 @@ Take concrete steps toward your economic objectives:
 ## Key Features
 
 | Feature                     | What It Offers You                                       |
-|-----------------------------|----------------------------------------------------------|
+| --------------------------- | -------------------------------------------------------- |
 | **Customizable Dashboard**  | Visualize the financial aspects that matter most to you  |
 | **Transaction Tracking**    | Easily record expenses, income, and transfers            |
 | **Advanced Categorization** | Organize your money in a way that best fits your life    |
@@ -67,4 +67,4 @@ We're continuously working to improve your experience!
 - Personalized saving tips based on your habits
 - Family mode for shared financial management
 
-*Your journey to financial freedom begins with Wallet.*
+_Your journey to financial freedom begins with Wallet._

@@ -25,9 +25,9 @@ Everything you SEE and interact with—the buttons, the text, the colors, the la
 👉 The **frontend** is all about what users experience.
 It’s built using three main languages:
 
-* HTML – the structure (like the bones of a skeleton)
-* CSS – the style (like the clothes and accessories)
-* JavaScript – the behavior (like when you click a button and something happens)
+- HTML – the structure (like the bones of a skeleton)
+- CSS – the style (like the clothes and accessories)
+- JavaScript – the behavior (like when you click a button and something happens)
 
 📱 So whether you're on your phone, tablet, or laptop—the frontend is what you see on screen!
 
@@ -36,18 +36,18 @@ Simple example:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>My First Website</title>
-    <style>
-        h1 {
-            color: purple;
-        }
-    </style>
-</head>
-<body>
-<h1>Hello, world!</h1>
-<button onclick="alert('You clicked me!')">Click Me</button>
-</body>
+    <head>
+        <title>My First Website</title>
+        <style>
+            h1 {
+                color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello, world!</h1>
+        <button onclick="alert('You clicked me!')">Click Me</button>
+    </body>
 </html>
 ```
 
@@ -59,19 +59,19 @@ Now… behind every awesome frontend, there’s a powerful brain working behind 
 
 That’s the **backend**.
 
-* The backend is what you don’t see—it’s responsible for things like:
-* Storing and managing data (like your login info or saved playlists)
-* Handling requests from the frontend
-* Making sure everything is secure and working smoothly
+- The backend is what you don’t see—it’s responsible for things like:
+- Storing and managing data (like your login info or saved playlists)
+- Handling requests from the frontend
+- Making sure everything is secure and working smoothly
 
 It usually runs on a **server** and talks to a **database**.
 
 Popular backend languages include:
 
-* Node.js (JavaScript on the server!)
-* Python
-* PHP
-* Java
+- Node.js (JavaScript on the server!)
+- Python
+- PHP
+- Java
 
 Simple example (Node.js + Express):
 
@@ -86,7 +86,6 @@ app.get('/hello', (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
-
 ```
 
 You wouldn’t see that directly in the browser, but if the frontend calls `/hello`, this backend sends a message back.
@@ -121,10 +120,10 @@ Alright, now it’s your turn!
 🧠 Mini-Challenge:
 Create a simple HTML page with:
 
-* A title
-* A welcome message
-* A button that says “Get Data”
-* (Optional: Just pretend it's getting data from the backend!)
+- A title
+- A welcome message
+- A button that says “Get Data”
+- (Optional: Just pretend it's getting data from the backend!)
 
 This is your first step into the frontend world! 💻🔥
 And if you want to go even further, try linking a fake API using https://jsonplaceholder.typicode.com!
@@ -133,14 +132,15 @@ And if you want to go even further, try linking a fake API using https://jsonpla
 
 Let’s recap!
 
-* Frontend = What users see and interact with
-* Backend = The logic, database, and server behind the scenes
-* Together? They make the web WORK!
+- Frontend = What users see and interact with
+- Backend = The logic, database, and server behind the scenes
+- Together? They make the web WORK!
 
 And guess what? You’re already on your way to becoming a full-blown frontend developer. Just keep going, one step at a
 time.
 
 ---
+
 Keep learning, keep building, and remember:
 
 You’ve got this.
