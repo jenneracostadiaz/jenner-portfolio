@@ -17,3 +17,14 @@ export const ui = {
 };
 
 export const showDefaultLang = false;
+
+export const routes = {
+    en: {
+        blog: '/blog',
+        portfolio: '/portfolio',
+    },
+    es: {
+        blog: '/blog',
+        portfolio: '/portafolio',
+    },
+};
