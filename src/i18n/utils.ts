@@ -14,26 +14,38 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTranslatedPath(lang: keyof typeof ui) {
     return function translatePath(path: string, l: string = lang) {
-        const pathName = path.replaceAll('/', '');
-        const hasTranslation =
-            defaultLang !== l &&
-            routes[l as keyof typeof routes] !== undefined &&
-            routes[l as keyof typeof routes][
-                pathName as keyof (typeof routes)[typeof defaultLang]
-            ] !== undefined;
-        const translatedPath = hasTranslation
-            ? '/' +
-              routes[l as keyof typeof routes][
-                  pathName as keyof (typeof routes)[typeof defaultLang]
-              ]
-            : path;
+        // If path is empty, just return the base path for the language
+        if (!path || path === '/') {
+            return !showDefaultLang && l === defaultLang ? '/' : `/${l}`;
+        }
 
-        const normalizedPath = translatedPath.startsWith('/')
-            ? translatedPath
-            : `/${translatedPath}`;
-        const finalPath =
-            !showDefaultLang && l === defaultLang ? normalizedPath : `/${l}${normalizedPath}`;
-        return finalPath.replace(/\/+/g, '/');
+        // Remove leading slash for route key lookup
+        const routeKey = path.startsWith('/') ? path.slice(1) : path;
+
+        // Check if this route key exists in the target language routes
+        const targetRoutes = routes[l as keyof typeof routes];
+        if (targetRoutes && routeKey in targetRoutes) {
+            const translatedPath = targetRoutes[routeKey as keyof typeof targetRoutes];
+
+            // For default language, return the path without language prefix (unless showDefaultLang is true)
+            if (l === defaultLang && !showDefaultLang) {
+                return translatedPath;
+            }
+
+            // For non-default language, add language prefix
+            return `/${l}${translatedPath}`;
+        }
+
+        // If no translation found, use the original path
+        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+
+        // For default language, return the path without language prefix (unless showDefaultLang is true)
+        if (l === defaultLang && !showDefaultLang) {
+            return normalizedPath;
+        }
+
+        // For non-default language, add language prefix
+        return `/${l}${normalizedPath}`;
     };
 }
 
@@ -48,29 +60,35 @@ export function getRouteFromUrl(url: URL): string | undefined {
         parts.shift();
     }
 
-    const path = parts[0]; // Get the first segment after language
-
-    if (!path) {
+    if (parts.length === 0) {
         return undefined;
     }
 
-    // For default language, check if path exists directly in routes
+    // Reconstruct the full path after removing language
+    const fullPath = `/${parts.join('/')}`;
+
+    // For default language, check if full path exists in routes
     if (defaultLang === currentLang) {
         const defaultRoutes = routes[defaultLang];
-        return (
-            Object.keys(defaultRoutes).find(
-                (key) => defaultRoutes[key as keyof typeof defaultRoutes] === `/${path}`
-            ) || path
+        // First try to find exact match
+        const exactMatch = Object.keys(defaultRoutes).find(
+            (key) => defaultRoutes[key as keyof typeof defaultRoutes] === fullPath
         );
+        if (exactMatch) {
+            return exactMatch;
+        }
+        // If no exact match, return the path without leading slash
+        return parts.join('/');
     }
 
     // For non-default language, find the key that matches the translated path
     const currentRoutes = routes[currentLang];
     const getKeyByValue = (obj: Record<string, string>, value: string): string | undefined => {
-        return Object.keys(obj).find((key) => obj[key] === `/${value}`);
+        return Object.keys(obj).find((key) => obj[key] === value);
     };
 
-    const routeKey = getKeyByValue(currentRoutes, path);
+    // First try exact match with full path
+    const routeKey = getKeyByValue(currentRoutes, fullPath);
 
     if (routeKey !== undefined) {
         return routeKey;
@@ -78,9 +96,14 @@ export function getRouteFromUrl(url: URL): string | undefined {
 
     // If no translation found, check if it's a direct match in default routes
     const defaultRoutes = routes[defaultLang];
-    return (
-        Object.keys(defaultRoutes).find(
-            (key) => defaultRoutes[key as keyof typeof defaultRoutes] === `/${path}`
-        ) || path
+    const exactMatch = Object.keys(defaultRoutes).find(
+        (key) => defaultRoutes[key as keyof typeof defaultRoutes] === fullPath
     );
+
+    if (exactMatch) {
+        return exactMatch;
+    }
+
+    // If no exact match found, return the path without leading slash
+    return parts.join('/');
 }
