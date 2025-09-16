@@ -4,12 +4,14 @@ import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
+
+const langClass = (l: string) => (lang === l ? 'font-bold' : '');
 ---
 
-<ul>
+<ul class="flex items-center gap-2">
     {
         Object.entries(languages).map(([lang, label]) => (
-            <li>
+            <li class={langClass(lang) + ' text-sm hover:underline'}>
                 <a href={translatePath('/', lang)}>{label}</a>
             </li>
         ))
