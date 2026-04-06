@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # visualstudiocode setting folder
 .vscode/
+
+pnpm-workspace.yaml
