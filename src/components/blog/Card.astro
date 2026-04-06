@@ -22,7 +22,7 @@ const cardStyles = {
             src={blog.frontmatter.imageCover}
             height={480}
             alt={blog.frontmatter.title}
-            class="object-cover !aspect-square rounded-tl-2xl rounded-tr-2xl sm:rounded-tr-none sm:rounded-bl-2xl transition-all duration-300 group-hover:scale-105 group-focus:scale-105"
+            class="object-cover aspect-square! rounded-tl-2xl rounded-tr-2xl sm:rounded-tr-none sm:rounded-bl-2xl transition-all duration-300 group-hover:scale-105 group-focus:scale-105"
             loading="eager"
         />
         {
@@ -48,7 +48,7 @@ const cardStyles = {
 
         {
             style === 'default' && (
-                <div class="flex-1 p-6 flex flex-col justify-between absolute bottom-0 bg-gradient-to-t from-neutral-950 to-neutral-950/80 w-full">
+                <div class="flex-1 p-6 flex flex-col justify-between absolute bottom-0 bg-linear-to-t from-neutral-950 to-neutral-950/80 w-full">
                     <div class="flex flex-col gap-2 mb-4">
                         <h2 class="text-2xl font-bold leading-tight text-white drop-shadow-sm">
                             {blog.frontmatter.title}
